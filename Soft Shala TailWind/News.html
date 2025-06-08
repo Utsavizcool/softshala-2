@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News</title>
+    <!-- TailWind CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Popins Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+        }
+
+        nav {
+            transition: box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        nav:hover {
+            transition: box-shadow 0.3s ease-in-out;
+            box-shadow: rgba(255, 0, 102, 0.18) 0px 8px 40px 8px;
+        }
+
+        .btn {
+            color: purple;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: 2px solid purple;
+            padding: 9px 18px;
+            font-size: 17px;
+            cursor: pointer;
+            font-weight: bold;
+            background: transparent;
+            position: relative;
+            transition: all 1s;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        .btn:hover {
+            color: white;
+            z-index: 2;
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            height: 100%;
+            width: 0%;
+            top: 0;
+            left: -40px;
+            transform: skewX(45deg);
+            background-color: purple;
+            z-index: -1;
+            transition: all 1s;
+        }
+
+        .btn:hover::before {
+            width: 160%;
+        }
+
+        .btn::after {
+            content: "";
+            position: absolute;
+            height: 100%;
+            width: 0%;
+            top: 0;
+            right: -40px;
+            transform: skewX(-45deg);
+            background-color: rgb(98, 27, 98);
+            z-index: -1;
+            transition: all 1s;
+        }
+
+        .btn:hover::after {
+            width: 160%;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <!-- Header Section -->
+    <section class="nav-bar">
+        <nav class="bg-gray-800 flex flex-wrap items-center p-2 gap-2 sticky top-0 z-50">
+            <!-- Logo Part -->
+            <a href="index.html" class="flex-shrink-0">
+                <img src="/Assets/Images/logo1.png" alt="" class="w-32 sm:w-40 h-14 object-contain ml-2 sm:ml-5">
+            </a>
+            <!-- Mobile Menu Button -->
+            <button id="menu-toggle" class="sm:hidden ml-auto mr-2 text-gray-200 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+            <!-- Search Bar -->
+            <div class="search-bar flex gap-2 items-center order-3 sm:order-none w-full sm:w-auto px-2 sm:px-0 mt-2 sm:mt-0 sm:ml-4"
+                id="search-bar">
+                <input type="text" placeholder="Search..." class="py-2 px-4 rounded bg-gray-700 text-white w-full sm:w-auto"
+                    style="border-radius: 10px;">
+                <a href="#" class="search-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="size-8 text-gray-400 cursor-pointer hover:text-gray-200">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                    </svg>
+                </a>
+            </div>
+            <!-- Navigation Links -->
+            <div class="nav-links flex-1 w-full sm:w-auto" id="nav-links">
+                <ul class="flex-col sm:flex-row flex justify-end items-center p-4 text-white gap-3 sm:gap-5 hidden sm:flex">
+                    <li><a href="index.html" class="text-white hover:text-gray-400 ">Home</a></li>
+                    <li><a href="about.html" class="text-white hover:text-gray-400">About</a></li>
+                    <li><a href="features.html" class="text-white hover:text-gray-400">Features</a></li>
+                    <li><a href="news.html" class="text-gray-600 hover:text-gray-400">News</a></li>
+                    <li><a href="contact.html" class="text-white hover:text-gray-400">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="sm:hidden hidden bg-gray-800">
+            <ul class="flex flex-col text-white gap-2 px-4 pb-4">
+                <li><a href="index.html" class="block py-2 hover:text-gray-400">Home</a></li>
+                <li><a href="about.html" class="block py-2 hover:text-gray-400">About</a></li>
+                <li><a href="features.html" class="block py-2 hover:text-gray-400">Features</a></li>
+                <li><a href="news.html" class="block py-2 text-gray-600 hover:text-gray-400">News</a></li>
+                <li><a href="contact.html" class="block py-2 hover:text-gray-400">Contact</a></li>
+            </ul>
+        </div>
+        <script>
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navLinks = document.getElementById('nav-links');
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        </script>
+    </section>
+    <section class="grid grid-cols-5">
+        <div class="container mt-4 mx-auto p-2 sm:p-5 col-span-5 gap-4 md:col-span-4">
+            <div class="col-span-2 p-2 sm:p-4 team-member bg-white rounded-lg shadow-md">
+                <div class="heading flex items-center justify-center my-4 gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="size-10">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                    </svg>
+
+
+                    <h1 class="text-4xl font-bold text-gray-800 mb-2">
+                        Latest News
+                    </h1>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 mx-auto md:grid-cols-3 gap-4">
+                    <!-- News 1 -->
+                    <div
+                        class="news-item p-4 bg-gray-50 rounded-lg shadow hover:shadow-lg transition-shadow flex flex-col justify-between">
+                        <a href="" class="flex-1 flex flex-col">
+                            <img src="/Assets/Images/news1.jpg" alt=""
+                                class="w-full h-40 sm:h-48 object-cover rounded mb-4">
+                            <h2 class="text-lg sm:text-xl font-semibold mb-2">Market Update: Slight Recovery in NEPSE
+                            </h2>
+                            <p class="text-gray-700 mb-4">On Monday, June 2, 2025, the Nepal Stock Exchange (NEPSE)
+                                experienced a slight recovery following a public holiday. The
+                                market recorded transactions worth NPR 9.22 billion, indicating varied performances
+                                across different sectors and
+                                companies.</p>
+                        </a>
+                        <div class="button flex flex-col sm:flex-row justify-start gap-4">
+                            <a href="" class="btn flex items-center" style="border-radius: 9px;">Read more</a>
+                        </div>
+                    </div>
+                    <!-- News 2 -->
+                    <div
+                        class="news-item p-4 bg-gray-50 rounded-lg shadow hover:shadow-lg transition-shadow flex flex-col justify-between">
+                        <a href="" class="flex-1 flex flex-col">
+                            <img src="/Assets/Images/news2.jpg" alt=""
+                                class="w-full h-40 sm:h-48 object-cover rounded mb-4">
+                            <h2 class="text-lg sm:text-xl font-semibold mb-2">Upcoming Event: Nepal Impact Investment
+                                Forum 2025
+                            </h2>
+                            <p class="text-gray-700 mb-4">The Nepal Impact Investment Forum (NIIF) 2025 is set to
+                                commence tomorrow, June 5, in Kathmandu. This event aims to
+                                enhance foreign investments in Nepal, bringing together investors, policymakers, and
+                                entrepreneurs to discuss
+                                opportunities in the country's impact investment landscape.</p>
+                        </a>
+                        <div class="button flex flex-col sm:flex-row justify-start gap-4">
+                            <a href="" class="btn flex items-center" style="border-radius: 9px;">Read more</a>
+                        </div>
+                    </div>
+                    <!-- News 3 -->
+                    <div
+                        class="news-item p-4 bg-gray-50 rounded-lg shadow hover:shadow-lg transition-shadow flex flex-col justify-between">
+                        <a href="" class="flex-1 flex flex-col">
+                            <img src="/Assets/Images/add.png" alt=""
+                                class="w-full h-40 sm:h-48 object-cover rounded mb-4">
+                            <h2 class="text-lg sm:text-xl font-semibold mb-2">Share Hub App: Recent Updates</h2>
+                            <p class="text-gray-700 mb-4">The Share Hub app, a popular NEPSE stock portfolio management
+                                tool, has recently been updated to version 10.0.6. The
+                                latest update includes features such as Odd Lot handling, Facebook login fixes, and
+                                various bug fixes. The app offers
+                                real-time NEPSE alerts, IPO/FPO notifications, advanced floorsheet analysis, and more.
+                            </p>
+                        </a>
+                        <div class="button flex flex-col sm:flex-row justify-start gap-4">
+                            <a href="https://play.google.com/store/apps/details?hl=en_US&id=com.softshalanepal.sharehub&utm"
+                                class="btn flex items-center justify-center" style="border-radius: 9px;">
+                                <svg class="w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 30 30" fill="currentColor">
+                                    <path
+                                        d="M 7.6230469 3.2109375 L 18 13.585938 L 20.677734 10.908203 C 17.018734 8.6882031 12.118063 5.7100938 9.9140625 4.3710938 L 8.4375 3.4765625 C 8.1765 3.3175625 7.8970469 3.2319375 7.6230469 3.2109375 z M 6.0390625 4.453125 C 6.0180625 4.567125 6 4.6816875 6 4.8046875 L 6 25.308594 C 6 25.394594 6.0172969 25.474641 6.0292969 25.556641 L 16.585938 15 L 6.0390625 4.453125 z M 22.4375 11.976562 L 19.414062 15 L 22.384766 17.970703 C 23.958766 17.016703 25.048922 16.35425 25.169922 16.28125 C 25.704922 15.95425 26.007047 15.460875 25.998047 14.921875 C 25.990047 14.392875 25.687828 13.919906 25.173828 13.628906 C 25.058828 13.562906 23.9835 12.913563 22.4375 11.976562 z M 18 16.414062 L 7.6542969 26.759766 C 7.8552969 26.724766 8.0560469 26.664828 8.2480469 26.548828 C 8.5140469 26.386828 15.7 22.027062 20.625 19.039062 L 18 16.414062 z">
+                                    </path>
+                                </svg>
+                                <span class="text-sm">Play Store</span>
+                            </a>
+                            <a href="https://apps.apple.com/qa/app/share-hub-nepse-information/id1567874669"
+                                class="btn flex items-center justify-center" style="border-radius: 9px;">
+                                <svg class="w-6 h-6 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M17.537 12.625a4.421 4.421 0 0 0 2.684 4.047 10.96 10.96 0 0 1-1.384 2.845c-.834 1.218-1.7 2.432-3.062 2.457-1.34.025-1.77-.794-3.3-.794-1.531 0-2.01.769-3.275.82-1.316.049-2.317-1.318-3.158-2.532-1.72-2.484-3.032-7.017-1.27-10.077A4.9 4.9 0 0 1 8.91 6.884c1.292-.025 2.51.869 3.3.869.789 0 2.27-1.075 3.828-.917a4.67 4.67 0 0 1 3.66 1.984 4.524 4.524 0 0 0-2.16 3.805m-2.52-7.432A4.4 4.4 0 0 0 16.06 2a4.482 4.482 0 0 0-2.945 1.516 4.185 4.185 0 0 0-1.061 3.093 3.708 3.708 0 0 0 2.967-1.416Z" />
+                                </svg>
+                                <span class="text-sm">App Store</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+                    <!-- News 4 -->
+                    <div
+                        class="news-item p-4 bg-gray-50 rounded-lg shadow hover:shadow-lg transition-shadow flex flex-col justify-between">
+                        <a href="" class="flex-1 flex flex-col">
+                            <img src="/Assets/Images/news2.jpg" alt=""
+                                class="w-full h-40 sm:h-48 object-cover rounded mb-4">
+                            <h2 class="text-lg sm:text-xl font-semibold mb-2">Upcoming Event: Nepal Impact Investment
+                                Forum 2025
+                            </h2>
+                            <p class="text-gray-700 mb-4">The Nepal Impact Investment Forum (NIIF) 2025 is set to
+                                commence tomorrow, June 5, in Kathmandu. This event aims to
+                                enhance foreign investments in Nepal, bringing together investors, policymakers, and
+                                entrepreneurs to discuss
+                                opportunities in the country's impact investment landscape.</p>
+                        </a>
+                        <div class="button flex flex-col sm:flex-row justify-start gap-4">
+                            <a href="" class="btn flex items-center" style="border-radius: 9px;">Read more</a>
+                        </div>
+                    </div>
+                    <!-- News 5 -->
+                    <div
+                        class="news-item p-4 bg-gray-50 rounded-lg shadow hover:shadow-lg transition-shadow flex flex-col justify-between">
+                        <a href="" class="flex-1 flex flex-col">
+                            <img src="/Assets/Images/news2.jpg" alt=""
+                                class="w-full h-40 sm:h-48 object-cover rounded mb-4">
+                            <h2 class="text-lg sm:text-xl font-semibold mb-2">Upcoming Event: Nepal Impact Investment
+                                Forum 2025
+                            </h2>
+                            <p class="text-gray-700 mb-4">The Nepal Impact Investment Forum (NIIF) 2025 is set to
+                                commence tomorrow, June 5, in Kathmandu. This event aims to
+                                enhance foreign investments in Nepal, bringing together investors, policymakers, and
+                                entrepreneurs to discuss
+                                opportunities in the country's impact investment landscape.</p>
+                        </a>
+                        <div class="button flex flex-col sm:flex-row justify-start gap-4">
+                            <a href="" class="btn flex items-center" style="border-radius: 9px;">Read more</a>
+                        </div>
+                    </div>
+                    <!-- News 6 -->
+                    <div
+                        class="news-item p-4 bg-gray-50 rounded-lg shadow hover:shadow-lg transition-shadow flex flex-col justify-between">
+                        <a href="" class="flex-1 flex flex-col">
+                            <img src="/Assets/Images/news2.jpg" alt=""
+                                class="w-full h-40 sm:h-48 object-cover rounded mb-4">
+                            <h2 class="text-lg sm:text-xl font-semibold mb-2">Upcoming Event: Nepal Impact Investment
+                                Forum 2025
+                            </h2>
+                            <p class="text-gray-700 mb-4">The Nepal Impact Investment Forum (NIIF) 2025 is set to
+                                commence tomorrow, June 5, in Kathmandu. This event aims to
+                                enhance foreign investments in Nepal, bringing together investors, policymakers, and
+                                entrepreneurs to discuss
+                                opportunities in the country's impact investment landscape.</p>
+                        </a>
+                        <div class="button flex flex-col sm:flex-row justify-start gap-4">
+                            <a href="" class="btn flex items-center" style="border-radius: 9px;">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- News 7 -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+                    <div
+                        class="news-item p-4 bg-gray-50 rounded-lg shadow hover:shadow-lg transition-shadow flex flex-col justify-between">
+                        <a href="" class="flex-1 flex flex-col">
+                            <img src="/Assets/Images/news2.jpg" alt=""
+                                class="w-full h-40 sm:h-48 object-cover rounded mb-4">
+                            <h2 class="text-lg sm:text-xl font-semibold mb-2">Upcoming Event: Nepal Impact Investment
+                                Forum 2025
+                            </h2>
+                            <p class="text-gray-700 mb-4">The Nepal Impact Investment Forum (NIIF) 2025 is set to
+                                commence tomorrow, June 5, in Kathmandu. This event aims to
+                                enhance foreign investments in Nepal, bringing together investors, policymakers, and
+                                entrepreneurs to discuss
+                                opportunities in the country's impact investment landscape.</p>
+                        </a>
+                        <div class="button flex flex-col sm:flex-row justify-start gap-4">
+                            <a href="" class="btn flex items-center" style="border-radius: 9px;">Read more</a>
+                        </div>
+                    </div>
+                    <!-- News 8 -->
+                    <div
+                        class="news-item p-4 bg-gray-50 rounded-lg shadow hover:shadow-lg transition-shadow flex flex-col justify-between">
+                        <a href="" class="flex-1 flex flex-col">
+                            <img src="/Assets/Images/news2.jpg" alt=""
+                                class="w-full h-40 sm:h-48 object-cover rounded mb-4">
+                            <h2 class="text-lg sm:text-xl font-semibold mb-2">Upcoming Event: Nepal Impact Investment
+                                Forum 2025
+                            </h2>
+                            <p class="text-gray-700 mb-4">The Nepal Impact Investment Forum (NIIF) 2025 is set to
+                                commence tomorrow, June 5, in Kathmandu. This event aims to
+                                enhance foreign investments in Nepal, bringing together investors, policymakers, and
+                                entrepreneurs to discuss
+                                opportunities in the country's impact investment landscape.</p>
+                        </a>
+                        <div class="button flex flex-col sm:flex-row justify-start gap-4">
+                            <a href="" class="btn flex items-center" style="border-radius: 9px;">Read more</a>
+                        </div>
+                    </div>
+                    <!-- News 9 -->
+                    <div
+                        class="news-item p-4 bg-gray-50 rounded-lg shadow hover:shadow-lg transition-shadow flex flex-col justify-between">
+                        <a href="" class="flex-1 flex flex-col">
+                            <img src="/Assets/Images/news2.jpg" alt=""
+                                class="w-full h-40 sm:h-48 object-cover rounded mb-4">
+                            <h2 class="text-lg sm:text-xl font-semibold mb-2">Upcoming Event: Nepal Impact Investment
+                                Forum 2025
+                            </h2>
+                            <p class="text-gray-700 mb-4">The Nepal Impact Investment Forum (NIIF) 2025 is set to
+                                commence tomorrow, June 5, in Kathmandu. This event aims to
+                                enhance foreign investments in Nepal, bringing together investors, policymakers, and
+                                entrepreneurs to discuss
+                                opportunities in the country's impact investment landscape.</p>
+                        </a>
+                        <div class="button flex flex-col sm:flex-row justify-start gap-4">
+                            <a href="" class="btn flex items-center" style="border-radius: 9px;">Read more</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Recent News section -->
+        <section class="w-full md:col-span-1 col-span-5 px-2 sm:px-4 mt-4 md:mt-3 mx-auto max-w-full md:max-w-xs">
+            <div class="mt-5 container mx-auto p-4 bg-white rounded-lg shadow-md">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                    <svg class="w-7 h-7 text-purple-600" fill="none" stroke="currentColor" stroke-width="2"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M19 21H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h4l2-2 2 2h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2z" />
+                    </svg>
+                    Recent News
+                </h2>
+                <ul class="divide-y divide-gray-200">
+                    <li class="py-3 flex flex-col sm:flex-row items-start gap-3">
+                        <img src="/Assets/Images/news1.jpg" alt="Market Update" class="w-full sm:w-16 h-32 sm:h-16 object-cover rounded flex-shrink-0">
+                        <div>
+                            <a href="#" class="font-semibold text-gray-900 hover:text-purple-700">Market Update: Slight
+                                Recovery
+                                in NEPSE</a>
+                            <p class="text-gray-600 text-sm">June 2, 2025 &middot; NEPSE saw a slight recovery after a
+                                public
+                                holiday, with NPR 9.22B in transactions.</p>
+                        </div>
+                    </li>
+                    <li class="py-3 flex flex-col sm:flex-row items-start gap-3">
+                        <img src="/Assets/Images/news2.jpg" alt="NIIF 2025" class="w-full sm:w-16 h-32 sm:h-16 object-cover rounded flex-shrink-0">
+                        <div>
+                            <a href="#" class="font-semibold text-gray-900 hover:text-purple-700">Nepal Impact
+                                Investment Forum
+                                2025</a>
+                            <p class="text-gray-600 text-sm">June 5, 2025 &middot; Major event to boost foreign
+                                investment,
+                                gathering investors and policymakers in Kathmandu.</p>
+                        </div>
+                    </li>
+                    <li class="py-3 flex flex-col sm:flex-row items-start gap-3">
+                        <img src="/Assets/Images/news1.jpg" alt="Market Update" class="w-full sm:w-16 h-32 sm:h-16 object-cover rounded flex-shrink-0">
+                        <div>
+                            <a href="#" class="font-semibold text-gray-900 hover:text-purple-700">Market Update: Slight
+                                Recovery
+                                in NEPSE</a>
+                            <p class="text-gray-600 text-sm">June 2, 2025 &middot; NEPSE saw a slight recovery after a
+                                public
+                                holiday, with NPR 9.22B in transactions.</p>
+                        </div>
+                    </li>
+                    <li class="py-3 flex flex-col sm:flex-row items-start gap-3">
+                        <img src="/Assets/Images/add.png" alt="Share Hub Update" class="w-full sm:w-16 h-32 sm:h-16 object-cover rounded flex-shrink-0">
+                        <div>
+                            <a href="#" class="font-semibold text-gray-900 hover:text-purple-700">Share Hub App: Version
+                                10.0.6
+                                Released</a>
+                            <p class="text-gray-600 text-sm">Latest update brings Odd Lot handling, Facebook login
+                                fixes, and
+                                more features for NEPSE users.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </section>
+
+    <!-- Footer Section -->
+    <div class="back-to-top flex justify-end px-2 sm:px-5 mb-2">
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'});" class="items-center gap-2 text-black flex">
+
+            <svg class="w-6 h-6 text-gray-800 cursor-pointer ml-4 sm:ml-9" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd"
+                    d="M12 2a1 1 0 0 1 .932.638l7 18a1 1 0 0 1-1.326 1.281L13 19.517V13a1 1 0 1 0-2 0v6.517l-5.606 2.402a1 1 0 0 1-1.326-1.281l7-18A1 1 0 0 1 12 2Z"
+                    clip-rule="evenodd" />
+            </svg>
+            <span class="cursor-pointer">Back to Top</span>
+        </button>
+    </div>
+    <footer class="bg-gray-800 text-white p-4">
+        <p class="text-center">&copy; 2023 Your Company. All rights reserved.</p>
+        <div class="mt-4 flex flex-col sm:flex-row items-center sm:justify-end gap-3"></div>
+        <p class="mt-3 sm:mt-0">Follow us on:</p>
+        <div class="flex gap-4 mt-2 sm:mt-0">
+            <a href="#"><img src="/Assets/Images/facebook.png" alt="Facebook" class="h-8 w-8"></a>
+            <a href="#"><img src="/Assets/Images/insta.webp" alt="Instagram" class="h-8 w-8"></a>
+            <a href="#"><img src="/Assets/Images/linkedin.png" alt="LinkedIn" class="h-8 w-8"></a>
+        </div>
+        </div>
+    </footer>
+</body>
+
+</html>

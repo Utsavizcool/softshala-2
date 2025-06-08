@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About</title>
+    <!-- TailWind CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Popins Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet" />
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+            min-height: auto;
+            cursor: pointer;
+        }
+
+        nav {
+            transition: box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: fixed;
+            width: 100%;
+        }
+
+        nav:hover {
+            transition: box-shadow 0.3s ease-in-out;
+            box-shadow: rgba(255, 0, 102, 0.18) 0px 8px 40px 8px;
+        }
+
+        .btn {
+            color: purple;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: 2px solid purple;
+            padding: 9px 18px;
+            font-size: 17px;
+            cursor: pointer;
+            font-weight: bold;
+            background: transparent;
+            position: relative;
+            transition: all 1s;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        .btn:hover {
+            color: white;
+            z-index: 2;
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            height: 100%;
+            width: 0%;
+            top: 0;
+            left: -40px;
+            transform: skewX(45deg);
+            background-color: purple;
+            z-index: -1;
+            transition: all 1s;
+        }
+
+        .btn:hover::before {
+            width: 160%;
+        }
+
+        .btn::after {
+            content: "";
+            position: absolute;
+            height: 100%;
+            width: 0%;
+            top: 0;
+            right: -40px;
+            transform: skewX(-45deg);
+            background-color: rgb(98, 27, 98);
+            z-index: -1;
+            transition: all 1s;
+        }
+
+        .btn:hover::after {
+            width: 160%;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <!-- Header Section -->
+    <!-- Nav Bar -->
+    <section class="nav-bar">
+        <nav class="bg-gray-800 flex flex-wrap items-center p-2 gap-2 sticky top-0 z-50">
+            <!-- Logo Part -->
+            <a href="index.html" class="flex-shrink-0">
+                <img src="/Assets/Images/logo1.png" alt="" class="w-32 sm:w-40 h-14 object-contain ml-2 sm:ml-5">
+            </a>
+            <!-- Mobile Menu Button -->
+            <button id="menu-toggle" class="sm:hidden ml-auto mr-2 text-gray-200 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+            <!-- Search Bar -->
+            <div class="search-bar flex gap-2 items-center order-3 sm:order-none w-full sm:w-auto px-2 sm:px-0 mt-2 sm:mt-0 sm:ml-4"
+                id="search-bar">
+                <input type="text" placeholder="Search..." class="py-2 px-4 rounded bg-gray-700 text-white w-full sm:w-auto"
+                    style="border-radius: 10px;">
+                <a href="#" class="search-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="size-8 text-gray-400 cursor-pointer hover:text-gray-200">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                    </svg>
+                </a>
+            </div>
+            <!-- Navigation Links -->
+            <div class="nav-links flex-1 w-full sm:w-auto" id="nav-links">
+                <ul class="flex-col sm:flex-row flex justify-end items-center p-4 text-white gap-3 sm:gap-5 hidden sm:flex">
+                    <li><a href="index.html" class="text-white hover:text-gray-400 ">Home</a></li>
+                    <li><a href="about.html" class="text-gray-600 hover:text-gray-400">About</a></li>
+                    <li><a href="features.html" class="text-white hover:text-gray-400">Features</a></li>
+                    <li><a href="news.html" class="text-white hover:text-gray-400">News</a></li>
+                    <li><a href="contact.html" class="text-white hover:text-gray-400">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="sm:hidden hidden bg-gray-800">
+            <ul class="flex flex-col text-white gap-2 px-4 pb-4">
+                <li><a href="index.html" class="block py-2 hover:text-gray-400">Home</a></li>
+                <li><a href="about.html" class="block py-2 text-gray-600 hover:text-gray-400">About</a></li>
+                <li><a href="features.html" class="block py-2 hover:text-gray-400">Features</a></li>
+                <li><a href="news.html" class="block py-2 hover:text-gray-400">News</a></li>
+                <li><a href="contact.html" class="block py-2 hover:text-gray-400">Contact</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <!-- Hero Part -->
+    <section class="hero bg-gray-100 py-10 mt-30">
+        <div class="container mx-auto text-center">
+            <h1 class="text-4xl font-bold mb-4">About Us</h1>
+            <p class="text-lg text-gray-700">
+                Learn more about our mission, vision, and values.
+            </p>
+        </div>
+    </section>
+    <!-- About Content -->
+    <section class="about-content py-10 px-10">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div
+                    class="about-text bg-white p-6 rounded-lg shadow-md hover:scale-102 bg-white rounded shadow hover:shadow-lg transition-shadow flex flex-col justify-between">
+                    <div>
+                        <h2 class="text-2xl md:text-3xl font-semibold mb-4">
+                            Who we are?
+                        </h2>
+                        <p class="text-justify text-base md:text-lg">
+                            Welcome to SoftShala, your premier destination for comprehensive
+                            software solutions and development services. Our mission is to
+                            empower businesses and individuals with cutting-edge technology
+                            that drives innovation and growth.
+                        </p>
+                        <p class="mt-2 text-base md:text-lg">
+                            Share Hub Nepal is a comprehensive mobile application developed
+                            by Softshala Nepal, designed to assist investors in navigating
+                            the Nepal Stock Exchange (NEPSE). Available on both Android and
+                            iOS platforms, the app offers a suite of features tailored for
+                            both novice and seasoned investors.
+                        </p>
+                    </div>
+                    <div class="button flex flex-col sm:flex-row flex-wrap justify-center md:justify-start gap-4 mt-4">
+                        <a href="https://play.google.com/store/apps/details?hl=en_US&id=com.softshalanepal.sharehub&utm"
+                            class="btn flex items-center justify-center w-full sm:w-auto" style="border-radius: 9px">
+                            <svg class="w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24"
+                                height="24" viewBox="0 0 30 30" fill="currentColor">
+                                <path
+                                    d="M 7.6230469 3.2109375 L 18 13.585938 L 20.677734 10.908203 C 17.018734 8.6882031 12.118063 5.7100938 9.9140625 4.3710938 L 8.4375 3.4765625 C 8.1765 3.3175625 7.8970469 3.2319375 7.6230469 3.2109375 z M 6.0390625 4.453125 C 6.0180625 4.567125 6 4.6816875 6 4.8046875 L 6 25.308594 C 6 25.394594 6.0172969 25.474641 6.0292969 25.556641 L 16.585938 15 L 6.0390625 4.453125 z M 22.4375 11.976562 L 19.414062 15 L 22.384766 17.970703 C 23.958766 17.016703 25.048922 16.35425 25.169922 16.28125 C 25.704922 15.95425 26.007047 15.460875 25.998047 14.921875 C 25.990047 14.392875 25.687828 13.919906 25.173828 13.628906 C 25.058828 13.562906 23.9835 12.913563 22.4375 11.976562 z M 18 16.414062 L 7.6542969 26.759766 C 7.8552969 26.724766 8.0560469 26.664828 8.2480469 26.548828 C 8.5140469 26.386828 15.7 22.027062 20.625 19.039062 L 18 16.414062 z">
+                                </path>
+                            </svg>
+                            Play Store
+                        </a>
+                        <a href="https://apps.apple.com/qa/app/share-hub-nepse-information/id1567874669"
+                            class="btn flex items-center justify-center w-full sm:w-auto" style="border-radius: 9px">
+                            <svg class="w-6 h-6 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                                height="24" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M17.537 12.625a4.421 4.421 0 0 0 2.684 4.047 10.96 10.96 0 0 1-1.384 2.845c-.834 1.218-1.7 2.432-3.062 2.457-1.34.025-1.77-.794-3.3-.794-1.531 0-2.01.769-3.275.82-1.316.049-2.317-1.318-3.158-2.532-1.72-2.484-3.032-7.017-1.27-10.077A4.9 4.9 0 0 1 8.91 6.884c1.292-.025 2.51.869 3.3.869.789 0 2.27-1.075 3.828-.917a4.67 4.67 0 0 1 3.66 1.984 4.524 4.524 0 0 0-2.16 3.805m-2.52-7.432A4.4 4.4 0 0 0 16.06 2a4.482 4.482 0 0 0-2.945 1.516 4.185 4.185 0 0 0-1.061 3.093 3.708 3.708 0 0 0 2.967-1.416Z" />
+                            </svg>
+                            App Store
+                        </a>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="/Assets/Images/about-us.jpg" alt="About Us"
+                        class="w-full h-auto rounded-lg shadow-md hover:scale-102 transition-transform" style="
+                box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+                border-radius: 20px;
+                transition: transform 0.3s;
+              " />
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
+                <div class="px-6 py-6 mt-3 bg-white hover:scale-102 bg-white rounded shadow hover:shadow-lg transition-shadow"
+                    style="
+              box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+              border-radius: 20px;
+              transition: transform 0.3s;
+            ">
+                    <h2 class="text-2xl font-semibold mb-4">Our Mission</h2>
+                    <p class="text-gray-700">
+                        We aim to provide the best services to our customers and ensure
+                        their satisfaction through quality and innovation.
+                    </p>
+                </div>
+                <div class="px-6 py-6 mt-3 bg-white hover:scale-102 bg-white rounded shadow hover:shadow-lg transition-shadow"
+                    style="
+              box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+              border-radius: 20px;
+              transition: transform 0.3s;
+            ">
+                    <h2 class="text-2xl font-semibold mb-4">Our Vision</h2>
+                    <p class="text-gray-700">
+                        To be a leader in our industry, setting standards for excellence
+                        and innovation.
+                    </p>
+                </div>
+            </div>
+
+            <div
+                class="mt-10 bg-white p-6 rounded-lg shadow-md hover:scale-102 bg-white rounded shadow hover:shadow-lg transition-shadow">
+                <h2 class="text-2xl font-semibold mb-4">Our Values</h2>
+                <ul class="list-disc pl-5 text-gray-700">
+                    <li>Integrity</li>
+                    <li>Customer Focus</li>
+                    <li>Innovation</li>
+                    <li>Excellence</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- Team Section -->
+    <section class="team py-10 px-10 bg-gray-100">
+        <div class="container mx-auto">
+            <div class="heading flex items-center justify-center my-4 gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="size-10 mb-2">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                </svg>
+                <h2 class="text-4xl font-bold text-gray-800 mb-2">Our Team</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div
+                    class="team-member bg-white p-6 rounded-lg shadow-md hover:scale-102 bg-white rounded shadow hover:shadow-lg transition-shadow">
+                    <img src="/Assets/Images/team1.jpg" alt="Team Member 1"
+                        class="w-full h-48 object-cover rounded-t-lg mb-4" />
+                    <h3 class="text-xl font-semibold">Person</h3>
+                    <p class="text-gray-600">CEO & Founder</p>
+                </div>
+                <div
+                    class="team-member bg-white p-6 rounded-lg shadow-md hover:scale-102 bg-white rounded shadow hover:shadow-lg transition-shadow">
+                    <img src="/Assets/Images/team1.jpg" alt="Team Member 2"
+                        class="w-full h-48 object-cover rounded-t-lg mb-4" />
+                    <h3 class="text-xl font-semibold">Person</h3>
+                    <p class="text-gray-600">jj</p>
+                </div>
+                <div
+                    class="team-member bg-white p-6 rounded-lg shadow-md hover:scale-102 bg-white rounded shadow hover:shadow-lg transition-shadow">
+                    <img src="/Assets/Images/team1.jpg" alt="Team Member 3"
+                        class="w-full h-48 object-cover rounded-t-lg mb-4" />
+                    <h3 class="text-xl font-semibold">Person</h3>
+                    <p class="text-gray-600">jj</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+                <div
+                    class="team-member bg-white p-6 rounded-lg shadow-md hover:scale-102 bg-white rounded shadow hover:shadow-lg transition-shadow">
+                    <img src="/Assets/Images/team1.jpg" alt="Team Member 1"
+                        class="w-full h-48 object-cover rounded-t-lg mb-4" />
+                    <h3 class="text-xl font-semibold">Person</h3>
+                    <p class="text-gray-600">CEO & Founder</p>
+                </div>
+                <div
+                    class="team-member bg-white p-6 rounded-lg shadow-md hover:scale-102 bg-white rounded shadow hover:shadow-lg transition-shadow">
+                    <img src="/Assets/Images/team1.jpg" alt="Team Member 2"
+                        class="w-full h-48 object-cover rounded-t-lg mb-4" />
+                    <h3 class="text-xl font-semibold">Person</h3>
+                    <p class="text-gray-600">jj</p>
+                </div>
+                <div
+                    class="team-member bg-white p-6 rounded-lg shadow-md hover:scale-102 bg-white rounded shadow hover:shadow-lg transition-shadow">
+                    <img src="/Assets/Images/team1.jpg" alt="Team Member 3"
+                        class="w-full h-48 object-cover rounded-t-lg mb-4" />
+                    <h3 class="text-xl font-semibold">Person</h3>
+                    <p class="text-gray-600">jj</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer Section -->
+    <div class="back-to-top flex justify-end px-5 mb-2">
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'});" class="items-center gap-2 text-black">
+            <svg class="w-6 h-6 text-gray-800 cursor-pointer ml-9" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd"
+                    d="M12 2a1 1 0 0 1 .932.638l7 18a1 1 0 0 1-1.326 1.281L13 19.517V13a1 1 0 1 0-2 0v6.517l-5.606 2.402a1 1 0 0 1-1.326-1.281l7-18A1 1 0 0 1 12 2Z"
+                    clip-rule="evenodd" />
+            </svg>
+            <span class="cursor-pointer">Back to Top</span>
+        </button>
+    </div>
+    <footer class="bg-gray-800 text-white p-4">
+        <p class="text-center">&copy; 2023 Your Company. All rights reserved.</p>
+        <div class="mt-4 text-end flex flex-col sm:flex-row items-center sm:justify-end gap-3">
+            <p class="mt-3 sm:mt-0">Follow us on:</p>
+            <div class="flex gap-4 mt-2 sm:mt-0">
+                <a href="#"><img src="/Assets/Images/facebook.png" alt="Facebook" class="h-8 w-8" /></a>
+                <a href="#"><img src="/Assets/Images/insta.webp" alt="Instagram" class="h-8 w-8" /></a>
+                <a href="#"><img src="/Assets/Images/linkedin.png" alt="LinkedIn" class="h-8 w-8" /></a>
+            </div>
+        </div>
+    </footer>
+</body>
+<script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.querySelector('#nav-links ul');
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('hidden');
+    });
+
+    // Hide nav links on mobile when resizing from desktop
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 640) {
+            navLinks.classList.remove('hidden');
+        } else {
+            navLinks.classList.add('hidden');
+        }
+    });
+</script>
+</html>

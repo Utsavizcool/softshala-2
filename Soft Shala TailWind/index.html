@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <!-- TailWind CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Popins Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <!-- FlowBite JS CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+            cursor: pointer;
+        }
+
+        nav {
+            transition: box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: fixed;
+            width: 100%;
+        }
+
+        nav:hover {
+            transition: box-shadow 0.3s ease-in-out;
+            box-shadow: rgba(255, 0, 102, 0.18) 0px 8px 40px 8px;
+        }
+
+        #calculator {
+            scroll-margin-top: 6rem;
+        }
+
+        .btn {
+            color: purple;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: 2px solid purple;
+            padding: 9px 18px;
+            font-size: 17px;
+            cursor: pointer;
+            font-weight: bold;
+            background: transparent;
+            position: relative;
+            transition: all 1s;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        .btn:hover {
+            color: white;
+            z-index: 2;
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            height: 100%;
+            width: 0%;
+            top: 0;
+            left: -40px;
+            transform: skewX(45deg);
+            background-color: purple;
+            z-index: -1;
+            transition: all 1s;
+        }
+
+        .btn:hover::before {
+            width: 160%;
+        }
+
+        .btn::after {
+            content: "";
+            position: absolute;
+            height: 100%;
+            width: 0%;
+            top: 0;
+            right: -40px;
+            transform: skewX(-45deg);
+            background-color: rgb(98, 27, 98);
+            z-index: -1;
+            transition: all 1s;
+        }
+
+        .btn:hover::after {
+            width: 160%;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <!-- Header Section -->
+    <section class="nav-bar">
+        <nav class="bg-gray-800 flex flex-wrap items-center p-2 gap-2 sticky top-0 z-50">
+            <!-- Logo Part -->
+            <a href="index.html" class="flex-shrink-0">
+                <img src="/Assets/Images/logo1.png" alt="" class="w-32 sm:w-40 h-14 object-contain ml-2 sm:ml-5">
+            </a>
+            <!-- Mobile Menu Button -->
+            <button id="menu-toggle" class="sm:hidden ml-auto mr-2 text-gray-200 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+            <!-- Search Bar -->
+            <div class="search-bar flex gap-2 items-center order-3 sm:order-none w-full sm:w-auto px-2 sm:px-0 mt-2 sm:mt-0 sm:ml-4"
+                id="search-bar">
+                <input type="text" placeholder="Search..." class="py-2 px-4 rounded bg-gray-700 text-white w-full sm:w-auto"
+                    style="border-radius: 10px;">
+                <a href="#" class="search-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="size-8 text-gray-400 cursor-pointer hover:text-gray-200">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                    </svg>
+                </a>
+            </div>
+            <!-- Navigation Links -->
+            <div class="nav-links flex-1 w-full sm:w-auto" id="nav-links">
+                <ul class="flex-col sm:flex-row flex justify-end items-center p-4 text-white gap-3 sm:gap-5 hidden sm:flex">
+                    <li><a href="index.html" class="text-gray-600 hover:text-gray-400 ">Home</a></li>
+                    <li><a href="about.html" class="text-white hover:text-gray-400">About</a></li>
+                    <li><a href="features.html" class="text-white hover:text-gray-400">Features</a></li>
+                    <li><a href="news.html" class="text-white hover:text-gray-400">News</a></li>
+                    <li><a href="contact.html" class="text-white hover:text-gray-400">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="sm:hidden hidden bg-gray-800">
+            <ul class="flex flex-col text-white gap-2 px-4 pb-4">
+                <li><a href="index.html" class="block py-2 text-gray-600 hover:text-gray-400">Home</a></li>
+                <li><a href="about.html" class="block py-2 hover:text-gray-400">About</a></li>
+                <li><a href="features.html" class="block py-2 hover:text-gray-400">Features</a></li>
+                <li><a href="news.html" class="block py-2 hover:text-gray-400">News</a></li>
+                <li><a href="contact.html" class="block py-2 hover:text-gray-400">Contact</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Hero Section -->
+    <section class="hero-section mt-30">
+        <div class="container mx-auto mb-4 md:px-0">
+            <div class="px-6 py-6"
+                style="box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08); border-radius: 20px; transition: transform 0.3s;">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Left Content -->
+                    <div>
+                        <h1 class="text-4xl font-bold text-gray-800 mb-4">Share Hub Nepal</h1>
+                        <p class="text-start text-gray-600 mb-6">
+                            Share Hub Nepal is a comprehensive mobile application developed by Softshala Nepal, designed
+                            to
+                            assist investors in navigating the Nepal Stock Exchange (NEPSE). Available on both Android
+                            and
+                            iOS platforms, the app offers a suite of features tailored for both novice and seasoned
+                            investors.
+                        </p>
+                        <div class="button flex flex-wrap justify-center md:justify-start gap-4">
+                            <a href="https://play.google.com/store/apps/details?hl=en_US&id=com.softshalanepal.sharehub&utm"
+                                class="btn flex items-center" style="border-radius: 9px;" target="_blank"><svg class="w-6 h-6"
+                                    xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24"
+                                    viewBox="0 0 30 30" fill="currentColor">
+                                    <path
+                                        d="M 7.6230469 3.2109375 L 18 13.585938 L 20.677734 10.908203 C 17.018734 8.6882031 12.118063 5.7100938 9.9140625 4.3710938 L 8.4375 3.4765625 C 8.1765 3.3175625 7.8970469 3.2319375 7.6230469 3.2109375 z M 6.0390625 4.453125 C 6.0180625 4.567125 6 4.6816875 6 4.8046875 L 6 25.308594 C 6 25.394594 6.0172969 25.474641 6.0292969 25.556641 L 16.585938 15 L 6.0390625 4.453125 z M 22.4375 11.976562 L 19.414062 15 L 22.384766 17.970703 C 23.958766 17.016703 25.048922 16.35425 25.169922 16.28125 C 25.704922 15.95425 26.007047 15.460875 25.998047 14.921875 C 25.990047 14.392875 25.687828 13.919906 25.173828 13.628906 C 25.058828 13.562906 23.9835 12.913563 22.4375 11.976562 z M 18 16.414062 L 7.6542969 26.759766 C 7.8552969 26.724766 8.0560469 26.664828 8.2480469 26.548828 C 8.5140469 26.386828 15.7 22.027062 20.625 19.039062 L 18 16.414062 z">
+                                    </path>
+                                </svg>Play Store</a>
+                            <a href="https://apps.apple.com/qa/app/share-hub-nepse-information/id1567874669"
+                                class="btn flex items-center" style="border-radius: 9px;" target="_blank"><svg class="w-6 h-6"
+                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M17.537 12.625a4.421 4.421 0 0 0 2.684 4.047 10.96 10.96 0 0 1-1.384 2.845c-.834 1.218-1.7 2.432-3.062 2.457-1.34.025-1.77-.794-3.3-.794-1.531 0-2.01.769-3.275.82-1.316.049-2.317-1.318-3.158-2.532-1.72-2.484-3.032-7.017-1.27-10.077A4.9 4.9 0 0 1 8.91 6.884c1.292-.025 2.51.869 3.3.869.789 0 2.27-1.075 3.828-.917a4.67 4.67 0 0 1 3.66 1.984 4.524 4.524 0 0 0-2.16 3.805m-2.52-7.432A4.4 4.4 0 0 0 16.06 2a4.482 4.482 0 0 0-2.945 1.516 4.185 4.185 0 0 0-1.061 3.093 3.708 3.708 0 0 0 2.967-1.416Z" />
+                                </svg>App Store</a>
+                        </div>
+                        <!-- Screenshots -->
+                        <div class="photos mt-6">
+                            <h2 class="text-2xl font-semibold text-gray-800 mt-6 mb-4">Screenshots</h2>
+                            <!-- Slider -->
+                            <div id="default-carousel" class="relative w-full" data-carousel="slide">
+                                <!-- Carousel wrapper -->
+                                <div class="relative h-56 overflow-hidden rounded-lg md:h-96"
+                                    style="box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08); border-radius: 20px; transition: transform 0.3s; background-color: rgba(0, 0, 0, 0.10) ;">
+                                    <!-- Item 1 -->
+                                    <div class="block duration-700 ease-in-out" data-carousel-item>
+                                        <img src="/Assets/Images/feature2.webp"
+                                            class="mx-auto object-contain rounded-xl shadow-lg" alt="...">
+                                    </div>
+                                    <!-- Item 2 -->
+                                    <div class="block duration-700 ease-in-out" data-carousel-item>
+                                        <img src="/Assets/Images/feature1.png"
+                                            class="mx-auto object-contain rounded-xl shadow-lg" alt="...">
+                                    </div>
+                                    <!-- Item 3 -->
+                                    <div class="block duration-700 ease-in-out" data-carousel-item>
+                                        <img src="/Assets/Images/feature3.webp"
+                                            class="mx-auto  object-contain rounded-xl shadow-lg " alt="...">
+                                    </div>
+                                    <!-- Item 4 -->
+                                    <div class="block duration-700 ease-in-out" data-carousel-item>
+                                        <img src="/Assets/Images/feature4.png"
+                                            class="mx-auto  object-contain rounded-xl shadow-lg" alt="...">
+                                    </div>
+                                    <!-- Item 5 -->
+                                    <div class="block duration-700 ease-in-out" data-carousel-item>
+                                        <img src="/Assets/Images/feature5.jpg"
+                                            class="mx-auto  object-contain rounded-xl shadow-lg" alt="...">
+                                    </div>
+                                </div>
+                                <!-- Slider controls -->
+                                <button type="button"
+                                    class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                                    data-carousel-prev>
+                                    <span
+                                        class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                                        <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
+                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                            viewBox="0 0 6 10">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="2" d="M5 1 1 5l4 4" />
+                                        </svg>
+                                        <span class="sr-only">Previous</span>
+                                    </span>
+                                </button>
+                                <button type="button"
+                                    class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                                    data-carousel-next>
+                                    <span
+                                        class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                                        <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
+                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                            viewBox="0 0 6 10">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="2" d="m1 9 4-4-4-4" />
+                                        </svg>
+                                        <span class="sr-only">Next</span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Right Content: Iframe -->
+                    <div class="iframe-container">
+                        <iframe src="https://sharehubnepal.com/technical-chart/NEPSE" frameborder="0"
+                            class="w-full h-[300px] md:h-[440px] rounded overflow-hidden"></iframe>
+                        <!-- Chart hyper link button -->
+                        <div class="card p-4 mt-6">
+                            <div class="flex items-center gap-2">
+                                <h2 class="text-2xl font-semibold text-gray-800 mt-6 mb-4">Technical Chart</h2>
+                                <svg class="w-10 h-10 text-gray-800 mt-2" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                    viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M4 4v15a1 1 0 0 0 1 1h15M8 16l2.5-5.5 3 3L17.273 7 20 9.667" />
+                                </svg>
+                            </div>
+
+                            <p class="text-gray-600 mb-4">
+                                Explore the technical analysis of NEPSE with our interactive chart.
+                            </p>
+                            <a href="https://sharehubnepal.com/technical-chart/NEPSE"
+                                class="btn flex items-center justify-center w-full" style="border-radius: 9px;" target="_blank">
+                                View Full Chart
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Features Section -->
+    <section class="features-section mt-10 mb-10">
+        <div class="container mx-auto px-6">
+            <div class="heading flex items-center justify-center my-4 gap-2">
+                <svg class="w-10 h-10 text-gray-800 mb-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                    width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd"
+                        d="M4.857 3A1.857 1.857 0 0 0 3 4.857v4.286C3 10.169 3.831 11 4.857 11h4.286A1.857 1.857 0 0 0 11 9.143V4.857A1.857 1.857 0 0 0 9.143 3H4.857Zm10 0A1.857 1.857 0 0 0 13 4.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 21 9.143V4.857A1.857 1.857 0 0 0 19.143 3h-4.286Zm-10 10A1.857 1.857 0 0 0 3 14.857v4.286C3 20.169 3.831 21 4.857 21h4.286A1.857 1.857 0 0 0 11 19.143v-4.286A1.857 1.857 0 0 0 9.143 13H4.857Zm10 0A1.857 1.857 0 0 0 13 14.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 21 19.143v-4.286A1.857 1.857 0 0 0 19.143 13h-4.286Z"
+                        clip-rule="evenodd" />
+                </svg>
+
+                <h1 class="text-4xl font-bold text-gray-800 mb-2">
+                    Key Features
+                </h1>
+            </div>
+            <!-- features card -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <a href="" target="_blank">
+                    <div class="feature-card p-4 hover:scale-105 bg-white rounded shadow hover:shadow-lg transition-shadow"
+                        style="box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08); border-radius: 20px; transition: transform 0.3s;">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Real-time Stock Updates</h3>
+                        <p class="text-gray-600">Get the latest stock prices and market trends in real-time.</p>
+                    </div>
+                </a>
+                <!-- Card 2 -->
+                <a href="" target="_blank">
+                    <div class="feature-card p-4 hover:scale-105 bg-white rounded shadow hover:shadow-lg transition-shadow"
+                        style="box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08); border-radius: 20px; transition: transform 0.3s;">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Portfolio Management</h3>
+                        <p class="text-gray-600">Manage your investments and track your portfolio performance.</p>
+                    </div>
+                </a>
+                <!-- Card 3 -->
+                <a href="" target="_blank">
+                    <div class="feature-card p-4 hover:scale-105 bg-white rounded shadow hover:shadow-lg transition-shadow"
+                        style="box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08); border-radius: 20px; transition: transform 0.3s;">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Market News</h3>
+                        <p class="text-gray-600">Stay updated with the latest news affecting the stock market.</p>
+                    </div>
+                </a>
+                <!-- Card 4 -->
+                <a href="" target="_blank">
+                    <div class="feature-card p-4 hover:scale-105 bg-white rounded shadow hover:shadow-lg transition-shadow"
+                        style="box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08); border-radius: 20px; transition: transform 0.3s;">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Technical Analysis Tools</h3>
+                        <p class="text-gray-600">Access advanced charting tools for in-depth technical analysis.</p>
+                    </div>
+                </a>
+                <!-- Card 5 -->
+                <a href="" target="_blank">
+                    <div class="feature-card p-4 hover:scale-105 bg-white rounded shadow hover:shadow-lg transition-shadow"
+                        style="box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08); border-radius: 20px; transition: transform 0.3s;">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">User-Friendly Interface</h3>
+                        <p class="text-gray-600">Navigate the app easily with its intuitive design and layout.</p>
+                    </div>
+                </a>
+                <!-- Card 6 -->
+                <a href="" target="_blank">
+                    <div class="feature-card p-4 hover:scale-105 bg-white rounded shadow hover:shadow-lg transition-shadow"
+                        style="box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08); border-radius: 20px; transition: transform 0.3s;">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Secure Transactions</h3>
+                        <p class="text-gray-600">Ensure the safety of your investments with secure transaction
+                            protocols.
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- FAQ -->
+    <section class="faq mb-4" id="faq">
+        <div class="container mx-auto px-6">
+            <div class="heading flex items-center justify-center my-4 gap-2">
+                <svg class="w-10 h-10 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                    height="24" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd"
+                        d="M7.05 4.05A7 7 0 0 1 19 9c0 2.407-1.197 3.874-2.186 5.084l-.04.048C15.77 15.362 15 16.34 15 18a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1c0-1.612-.77-2.613-1.78-3.875l-.045-.056C6.193 12.842 5 11.352 5 9a7 7 0 0 1 2.05-4.95ZM9 21a1 1 0 0 1 1-1h4a1 1 0 1 1 0 2h-4a1 1 0 0 1-1-1Zm1.586-13.414A2 2 0 0 1 12 7a1 1 0 1 0 0-2 4 4 0 0 0-4 4 1 1 0 0 0 2 0 2 2 0 0 1 .586-1.414Z"
+                        clip-rule="evenodd" />
+                </svg>
+                <h1 class="text-4xl font-bold text-gray-800 ">
+                    Frequently Asked Questions
+                </h1>
+            </div>
+            <!-- FAQ content -->
+            <div class="faq-content">
+                <a href="">
+                    <div class="feature-card p-4 hover:scale-101 bg-white rounded shadow hover:shadow-lg transition-shadow mb-3"
+                        style="box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08); border-radius: 20px; transition: transform 0.3s;">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">What is Share Hub Nepal?</h3>
+                        <p class="text-gray-600">Share Hub Nepal is a mobile application that provides tools and data
+                            for investors in the Nepal Stock Exchange (NEPSE),
+                            including portfolio tracking, stock updates, and analysis tools.
+                        </p>
+                    </div>
+                </a>
+                <a href="">
+                    <div class="feature-card p-4 hover:scale-101 bg-white rounded shadow hover:shadow-lg transition-shadow mb-3"
+                        style="box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08); border-radius: 20px; transition: transform 0.3s;">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">How can I download the app?</h3>
+                        <p class="text-gray-600">You can download Share Hub Nepal from the Google Play Store or Apple
+                            App Store by searching for "Share Hub Nepal".</p>
+                    </div>
+                </a>
+                <a href="">
+                    <div class="feature-card p-4 hover:scale-101 bg-white rounded shadow hover:shadow-lg transition-shadow mb-3"
+                        style="box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08); border-radius: 20px; transition: transform 0.3s;">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Is the app free to use?</h3>
+                        <p class="text-gray-600">Yes, Share Hub Nepal is free to download and use, with optional premium
+                            features available for purchase.</p>
+                    </div>
+                </a>
+                <a href="">
+                    <div class="feature-card p-4 hover:scale-101 bg-white rounded shadow hover:shadow-lg transition-shadow mb-3"
+                        style="box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08); border-radius: 20px; transition: transform 0.3s;">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">What features does the app offer?</h3>
+                        <p class="text-gray-600">The app offers real-time stock updates, portfolio management, market
+                            news, technical analysis tools, and more.</p>
+                    </div>
+                </a>
+                <a href="">
+                    <div class="feature-card p-4 hover:scale-101 bg-white rounded shadow hover:shadow-lg transition-shadow mb-5"
+                        style="box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08); border-radius: 20px; transition: transform 0.3s;">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">How can I contact support?</h3>
+                        <p class="text-gray-600">You can contact our support team through the app or via our website for
+                            any assistance or inquiries.</p>
+                    </div>
+                </a>
+            </div>
+    </section>
+    <!-- Calculator -->
+    <section class="calculator px-2 sm:px-4 md:px-6 mb-10" id="calculator">
+        <div class="heading flex items-center justify-center my-4 gap-2">
+            <svg class="w-10 h-10 text-gray-800 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                    d="M5 13.17a3.001 3.001 0 0 0 0 5.66V20a1 1 0 1 0 2 0v-1.17a3.001 3.001 0 0 0 0-5.66V4a1 1 0 0 0-2 0v9.17ZM11 20v-9.17a3.001 3.001 0 0 1 0-5.66V4a1 1 0 1 1 2 0v1.17a3.001 3.001 0 0 1 0 5.66V20a1 1 0 1 1-2 0Zm6-1.17V20a1 1 0 1 0 2 0v-1.17a3.001 3.001 0 0 0 0-5.66V4a1 1 0 1 0-2 0v9.17a3.001 3.001 0 0 0 0 5.66Z" />
+            </svg>
+            <h1 class="text-4xl font-bold text-gray-800 mb-2">
+                Calculator
+            </h1>
+        </div>
+        <div class="flex flex-col lg:flex-row gap-6 mx-auto w-full max-w-7xl">
+            <!-- Calculator Forms -->
+            <div class="p-4 sm:p-6 rounded-lg w-full lg:w-1/2 max-w-full mx-auto bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"
+                style="box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08); border-radius: 20px; transition: transform 0.3s;">
+                <div class="flex flex-wrap gap-2 md:gap-3 mb-6 justify-center md:justify-start lg:justify-start">
+                    <button
+                        class="bg-teal-800 text-white px-4 py-2 rounded font-semibold cursor-pointer transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-teal-400"
+                        onclick="showCalculator('Buy-calculator', this)">Buy</button>
+                    <button
+                        class="bg-gray-200 text-gray-800 px-4 py-2 rounded font-semibold cursor-pointer transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-teal-400"
+                        onclick="showCalculator('Sell-calculator', this)">Sell</button>
+                    <button
+                        class="bg-gray-200 text-gray-800 px-4 py-2 rounded font-semibold cursor-pointer transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-teal-400"
+                        onclick="showCalculator('Adjustment-calculator', this)">Adjustment</button>
+                    <button
+                        class="bg-gray-200 text-gray-800 px-4 py-2 rounded font-semibold cursor-pointer transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-teal-400"
+                        onclick="showCalculator('SIP-calculator', this)">SIP</button>
+                    <button
+                        class="bg-gray-200 text-gray-800 px-4 py-2 rounded font-semibold cursor-pointer transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-teal-400"
+                        onclick="showCalculator('Grahm-calculator', this)">Grahm</button>
+                    <button
+                        class="bg-gray-200 text-gray-800 px-4 py-2 rounded font-semibold cursor-pointer transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-teal-400"
+                        onclick="showCalculator('Averaging-calculator', this)">Averaging</button>
+                </div>
+
+                <div class="Buy-calculator hidden">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                        <div>
+                            <label class="block mb-1">Buy Price</label>
+                            <input id="buyPrice" type="number"
+                                class="w-full px-2 py-1 border border-gray-700 rounded" />
+                        </div>
+                        <div>
+                            <label class="block mb-1">Quantity</label>
+                            <input id="quantity" type="number"
+                                class="w-full px-2 py-1 border border-gray-700 rounded" />
+                        </div>
+                        <div>
+                            <label class="block mb-1">Capital Gain %</label>
+                            <select id="capitalGain" class="w-full px-2 py-1 border border-gray-700 rounded">
+                                <option value="0" selected>NaN</option>
+                                <option value="5">5%</option>
+                                <option value="10">10%</option>
+                                <option value="15">15%</option>
+                                <option value="20">20%</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="calculateProfit()"
+                            class="bg-teal-800 px-4 py-2 rounded text-white font-semibold mt-2 cursor-pointer hover:bg-teal-700 transition-colors duration-300">
+                            Calculate
+                        </button>
+                        <button onclick="reset()"
+                            class="bg-teal-800 px-4 py-2 rounded text-white font-semibold mt-2 cursor-pointer hover:bg-teal-700 transition-colors duration-300">
+                            Reset
+                        </button>
+                    </div>
+                    <div class="mt-6 space-y-2">
+                        <p id="totalCost" class="text-lg">Total Cost: NPR</p>
+                        <p id="netProfit" class="text-lg">Net Profit: NPR</p>
+                    </div>
+                </div>
+
+                <div class="Sell-calculator hidden">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                        <div>
+                            <label class="block mb-1">Sell Price</label>
+                            <input id="sellPrice" type="number"
+                                class="w-full px-2 py-1 border border-gray-700 rounded" />
+                        </div>
+                        <div>
+                            <label class="block mb-1">Quantity</label>
+                            <input id="sellQuantity" type="number"
+                                class="w-full px-2 py-1 border border-gray-700 rounded" />
+                        </div>
+                        <div>
+                            <label class="block mb-1">Capital Gain %</label>
+                            <select id="sellCapitalGain" class="w-full px-2 py-1 border border-gray-700 rounded">
+                                <option value="0" selected>NaN</option>
+                                <option value="5">5%</option>
+                                <option value="10">10%</option>
+                                <option value="15">15%</option>
+                                <option value="20">20%</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="calculateProfit()"
+                            class="bg-teal-800 px-4 py-2 rounded text-white font-semibold mt-2 cursor-pointer hover:bg-teal-700 transition-colors duration-300">
+                            Calculate
+                        </button>
+                        <button onclick="reset()"
+                            class="bg-teal-800 px-4 py-2 rounded text-white font-semibold mt-2 cursor-pointer hover:bg-teal-700 transition-colors duration-300">
+                            Reset
+                        </button>
+                    </div>
+                    <div class="mt-6 space-y-2">
+                        <p id="totalCost" class="text-lg">Total Cost: NPR</p>
+                        <p id="netProfit" class="text-lg">Net Profit: NPR</p>
+                    </div>
+                </div>
+
+                <!-- Placeholder divs for other calculators -->
+                <div class="Adjustment-calculator hidden">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                        <div>
+                            <label class="block mb-1">Original Price</label>
+                            <input id="adjustOriginalPrice" type="number"
+                                class="w-full px-2 py-1 border border-gray-700 rounded" />
+                        </div>
+                        <div>
+                            <label class="block mb-1">Bonus (%)</label>
+                            <input id="adjustBonus" type="number"
+                                class="w-full px-2 py-1 border border-gray-700 rounded" />
+                        </div>
+                        <div>
+                            <label class="block mb-1">Right (%)</label>
+                            <input id="adjustRight" type="number"
+                                class="w-full px-2 py-1 border border-gray-700 rounded" />
+                        </div>
+                        <div>
+                            <label class="block mb-1">Right Price</label>
+                            <input id="adjustRightPrice" type="number"
+                                class="w-full px-2 py-1 border border-gray-700 rounded" />
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="calculateAdjustment()"
+                            class="bg-teal-800 px-4 py-2 rounded text-white font-semibold mt-2 cursor-pointer hover:bg-teal-700 transition-colors duration-300">
+                            Calculate
+                        </button>
+                        <button onclick="resetAdjustment()"
+                            class="bg-teal-800 px-4 py-2 rounded text-white font-semibold mt-2 cursor-pointer hover:bg-teal-700 transition-colors duration-300">
+                            Reset
+                        </button>
+                    </div>
+                    <div class="mt-6 space-y-2">
+                        <p id="adjustedPrice" class="text-lg">Adjusted Price: NPR</p>
+                    </div>
+                </div>
+                <div class="SIP-calculator hidden">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                        <div>
+                            <label class="block mb-1">Monthly Investment</label>
+                            <input id="sipMonthly" type="number"
+                                class="w-full px-2 py-1 border border-gray-700 rounded" />
+                        </div>
+                        <div>
+                            <label class="block mb-1">Expected Return (%)</label>
+                            <input id="sipReturn" type="number"
+                                class="w-full px-2 py-1 border border-gray-700 rounded" />
+                        </div>
+                        <div>
+                            <label class="block mb-1">Years</label>
+                            <input id="sipYears" type="number"
+                                class="w-full px-2 py-1 border border-gray-700 rounded mt-6" />
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="calculateSIP()"
+                            class="bg-teal-800 px-4 py-2 rounded text-white font-semibold mt-2 cursor-pointer hover:bg-teal-700 transition-colors duration-300">
+                            Calculate
+                        </button>
+                        <button onclick="resetSIP()"
+                            class="bg-teal-800 px-4 py-2 rounded text-white font-semibold mt-2 cursor-pointer hover:bg-teal-700 transition-colors duration-300">
+                            Reset
+                        </button>
+                    </div>
+                    <div class="mt-6 space-y-2">
+                        <p id="sipTotalInvested" class="text-lg">Total Invested: NPR</p>
+                        <p id="sipMaturity" class="text-lg">Maturity Value: NPR</p>
+                    </div>
+                </div>
+                <div class="Grahm-calculator hidden">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                        <div>
+                            <label class="block mb-1">EPS</label>
+                            <input id="grahmEPS" type="number"
+                                class="w-full px-2 py-1 border border-gray-700 rounded" />
+                        </div>
+                        <div>
+                            <label class="block mb-1">Book Value</label>
+                            <input id="grahmBV" type="number" class="w-full px-2 py-1 border border-gray-700 rounded" />
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="calculateGrahm()"
+                            class="bg-teal-800 px-4 py-2 rounded text-white font-semibold mt-2 cursor-pointer hover:bg-teal-700 transition-colors duration-300">
+                            Calculate
+                        </button>
+                        <button onclick="resetGrahm()"
+                            class="bg-teal-800 px-4 py-2 rounded text-white font-semibold mt-2 cursor-pointer hover:bg-teal-700 transition-colors duration-300">
+                            Reset
+                        </button>
+                    </div>
+                    <div class="mt-6 space-y-2">
+                        <p id="grahmValue" class="text-lg">Graham Value: NPR</p>
+                    </div>
+                </div>
+                <div class="Averaging-calculator hidden">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                        <div>
+                            <label class="block mb-1">Old Quantity</label>
+                            <input id="avgOldQty" type="number"
+                                class="w-full px-2 py-1 border border-gray-700 rounded" />
+                        </div>
+                        <div>
+                            <label class="block mb-1">Old Price</label>
+                            <input id="avgOldPrice" type="number"
+                                class="w-full px-2 py-1 border border-gray-700 rounded" />
+                        </div>
+                        <div>
+                            <label class="block mb-1">New Quantity</label>
+                            <input id="avgNewQty" type="number"
+                                class="w-full px-2 py-1 border border-gray-700 rounded" />
+                        </div>
+                        <div>
+                            <label class="block mb-1">New Price</label>
+                            <input id="avgNewPrice" type="number"
+                                class="w-full px-2 py-1 border border-gray-700 rounded" />
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="calculateAveraging()"
+                            class="bg-teal-800 px-4 py-2 rounded text-white font-semibold mt-2 cursor-pointer hover:bg-teal-700 transition-colors duration-300">
+                            Calculate
+                        </button>
+                        <button onclick="resetAveraging()"
+                            class="bg-teal-800 px-4 py-2 rounded text-white font-semibold mt-2 cursor-pointer hover:bg-teal-700 transition-colors duration-300">
+                            Reset
+                        </button>
+                    </div>
+                    <div class="mt-6 space-y-2">
+                        <p id="avgResult" class="text-lg">Average Price: NPR</p>
+                    </div>
+                </div>
+            </div>
+            <!-- TV Display -->
+            <div class="p-4 sm:p-6 rounded-lg w-full lg:w-1/2 max-w-full mx-auto bg-white shadow-lg hover:shadow-xl transition-shadow"
+                style="box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08); border-radius: 20px; transition: transform 0.3s;">
+                <div
+                    class="relative mx-auto border-gray-800 bg-gray-800 border-[16px] rounded-t-xl h-[172px] max-w-[301px] md:h-[294px] md:max-w-[512px]">
+                    <div class="rounded-xl overflow-hidden h-[140px] md:h-[262px] flex flex-col justify-center">
+                        <!-- TV Display: Will be updated dynamically -->
+                        <div id="tvDisplay" class="text-lg text-white text-center items-center"></div>
+                    </div>
+                </div>
+                <div
+                    class="relative mx-auto bg-gray-900 dark:bg-gray-700 rounded-b-xl h-[24px] max-w-[301px] md:h-[42px] md:max-w-[512px]">
+                </div>
+                <div
+                    class="relative mx-auto bg-gray-800 rounded-b-xl h-[55px] max-w-[83px] md:h-[95px] md:max-w-[142px]">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <!-- Back to Top Part -->
+    <div class="back-to-top flex justify-end px-5 mb-2">
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'});" class="items-center gap-2 text-black">
+
+            <svg class="w-6 h-6 text-gray-800 cursor-pointer ml-9" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd"
+                    d="M12 2a1 1 0 0 1 .932.638l7 18a1 1 0 0 1-1.326 1.281L13 19.517V13a1 1 0 1 0-2 0v6.517l-5.606 2.402a1 1 0 0 1-1.326-1.281l7-18A1 1 0 0 1 12 2Z"
+                    clip-rule="evenodd" />
+            </svg>
+            <span class="cursor-pointer">Back to Top</span>
+        </button>
+    </div>
+    <!-- Main Footer Part -->
+    <footer class="bg-gray-800 text-white p-4 flex-col ">
+        <p class="text-center">&copy; 2023 Your Company. All rights reserved.</p>
+        <div class="flex gap-4 mt-2 sm:mt-0 justify-end items-center">
+            <p class="mt-3 sm:mt-0">Follow us on:</p>
+            <a href="#" target="_blank"><img src="/Assets/Images/facebook.png" alt="Facebook" class="h-8 w-8"></a>
+            <a href="#" target="_blank"><img src="/Assets/Images/insta.webp" alt="Instagram" class="h-8 w-8"></a>
+            <a href="#" target="_blank"><img src="/Assets/Images/linkedin.png" alt="LinkedIn" class="h-8 w-8"></a>
+        </div>
+    </footer>
+</body>
+<script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.querySelector('#nav-links ul');
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('hidden');
+    });
+
+    // Hide nav links on mobile when resizing from desktop
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 640) {
+            navLinks.classList.remove('hidden');
+        } else {
+            navLinks.classList.add('hidden');
+        }
+    });
+</script>
+</html>
+<script>
+    function showCalculator(className, btn) {
+        // Hide all calculator divs
+        document.querySelectorAll('.Buy-calculator, .Sell-calculator, .Adjustment-calculator, .SIP-calculator, .Grahm-calculator, .Averaging-calculator').forEach(div => {
+            div.classList.add('hidden');
+        });
+        // Remove active style from all buttons
+        document.querySelectorAll('.calculator .flex button').forEach(b => {
+            b.classList.remove('bg-teal-800', 'text-white');
+            b.classList.add('bg-gray-200', 'text-gray-800');
+        });
+        // Show the selected calculator
+        const target = document.querySelector('.' + className);
+        if (target) target.classList.remove('hidden');
+        // Set active style for clicked button
+        btn.classList.remove('bg-gray-200', 'text-gray-800');
+        btn.classList.add('bg-teal-800', 'text-white');
+        // Update TV display for the selected calculator
+        updateTvDisplay(className);
+    }
+    // Optionally, show Buy calculator by default
+    document.addEventListener('DOMContentLoaded', function () {
+        showCalculator('Buy-calculator', document.querySelector('.calculator .flex button'));
+    });
+
+    function updateTvDisplay(className) {
+        let html = '';
+        switch (className) {
+            case 'Buy-calculator':
+                html += `<p id="tvTotalCost" class="text-lg">Total Cost: NPR</p>`;
+                html += `<p id="tvNetProfit" class="text-lg">Net Profit: NPR</p>`;
+                break;
+            case 'Sell-calculator':
+                html += `<p id="tvTotalCost" class="text-lg">Total Cost: NPR</p>`;
+                html += `<p id="tvNetProfit" class="text-lg">Net Profit: NPR</p>`;
+                break;
+            case 'Adjustment-calculator':
+                html += `<p id="tvAdjustedPrice" class="text-lg">Adjusted Price: NPR</p>`;
+                break;
+            case 'SIP-calculator':
+                html += `<p id="tvSipTotalInvested" class="text-lg">Total Invested: NPR</p>`;
+                html += `<p id="tvSipMaturity" class="text-lg">Maturity Value: NPR</p>`;
+                break;
+            case 'Grahm-calculator':
+                html += `<p id="tvGrahmValue" class="text-lg">Graham Value: NPR</p>`;
+                break;
+            case 'Averaging-calculator':
+                html += `<p id="tvAvgResult" class="text-lg">Average Price: NPR</p>`;
+                break;
+        }
+        document.getElementById('tvDisplay').innerHTML = html;
+    }
+
+    function calculateProfit() {
+        const buyPrice = parseFloat(document.getElementById('buyPrice').value);
+        const quantity = parseFloat(document.getElementById('quantity').value);
+        const capitalGain = parseFloat(document.getElementById('capitalGain').value);
+
+        const sellPrice = parseFloat(document.getElementById('sellPrice')?.value);
+        const sellQuantity = parseFloat(document.getElementById('sellQuantity')?.value);
+        const sellCapitalGain = parseFloat(document.getElementById('sellCapitalGain')?.value);
+
+        // Determine which calculator is visible
+        const buyVisible = !document.querySelector('.Buy-calculator').classList.contains('hidden');
+        const sellVisible = !document.querySelector('.Sell-calculator').classList.contains('hidden');
+
+        if (buyVisible) {
+            if (isNaN(buyPrice) || isNaN(quantity) || isNaN(capitalGain)) {
+                alert("Please enter valid numbers for all fields.");
+                return;
+            }
+            const totalCost = buyPrice * quantity;
+            const profit = (totalCost * capitalGain) / 100;
+            const netProfit = totalCost + profit;
+
+            // Update only visible Buy result elements
+            if (!document.querySelector('.Buy-calculator').classList.contains('hidden')) {
+                document.querySelector('.Buy-calculator #totalCost').innerText = "Total Cost: NPR " + totalCost.toFixed(2);
+                document.querySelector('.Buy-calculator #netProfit').innerText = "Net Profit: NPR " + netProfit.toFixed(2);
+            }
+
+            // TV display
+            if (document.getElementById('tvTotalCost')) document.getElementById('tvTotalCost').innerText = "Total Cost: NPR " + totalCost.toFixed(2);
+            if (document.getElementById('tvNetProfit')) document.getElementById('tvNetProfit').innerText = "Net Profit: NPR " + netProfit.toFixed(2);
+        } else if (sellVisible) {
+            if (isNaN(sellPrice) || isNaN(sellQuantity) || isNaN(sellCapitalGain)) {
+                alert("Please enter valid numbers for all fields.");
+                return;
+            }
+            const totalCost = sellPrice * sellQuantity;
+            const profit = (totalCost * sellCapitalGain) / 100;
+            const netProfit = totalCost + profit;
+
+            // Update only visible Sell result elements
+            if (!document.querySelector('.Sell-calculator').classList.contains('hidden')) {
+                document.querySelector('.Sell-calculator #totalCost').innerText = "Total Cost: NPR " + totalCost.toFixed(2);
+                document.querySelector('.Sell-calculator #netProfit').innerText = "Net Profit: NPR " + netProfit.toFixed(2);
+            }
+
+            // TV display
+            if (document.getElementById('tvTotalCost')) document.getElementById('tvTotalCost').innerText = "Total Cost: NPR " + totalCost.toFixed(2);
+            if (document.getElementById('tvNetProfit')) document.getElementById('tvNetProfit').innerText = "Net Profit: NPR " + netProfit.toFixed(2);
+        }
+    }
+    function reset() {
+        // Reset Buy
+        document.getElementById('buyPrice').value = '';
+        document.getElementById('quantity').value = '';
+        document.getElementById('capitalGain').value = '0';
+        document.getElementById('totalCost').innerText = "Total Cost: NPR";
+        document.getElementById('netProfit').innerText = "Net Profit: NPR";
+        if (document.getElementById('tvTotalCost')) document.getElementById('tvTotalCost').innerText = "Total Cost: NPR";
+        if (document.getElementById('tvNetProfit')) document.getElementById('tvNetProfit').innerText = "Net Profit: NPR";
+        // Reset Sell
+        if (document.getElementById('sellPrice')) document.getElementById('sellPrice').value = '';
+        if (document.getElementById('sellQuantity')) document.getElementById('sellQuantity').value = '';
+        if (document.getElementById('sellCapitalGain')) document.getElementById('sellCapitalGain').value = '0';
+    }
+    function calculateAdjustment() {
+        const p = parseFloat(document.getElementById('adjustOriginalPrice').value);
+        const b = parseFloat(document.getElementById('adjustBonus').value) || 0;
+        const r = parseFloat(document.getElementById('adjustRight').value) || 0;
+        const rp = parseFloat(document.getElementById('adjustRightPrice').value) || 0;
+        if (isNaN(p)) {
+            alert("Please enter the original price.");
+            return;
+        }
+        const bonus = b / 100;
+        const right = r / 100;
+        const adjusted = ((p + (right * rp)) / (1 + bonus + right));
+        document.getElementById('adjustedPrice').innerText = "Adjusted Price: NPR " + (adjusted ? adjusted.toFixed(2) : "NaN");
+        if (document.getElementById('tvAdjustedPrice')) document.getElementById('tvAdjustedPrice').innerText = "Adjusted Price: NPR " + (adjusted ? adjusted.toFixed(2) : "NaN");
+    }
+    function resetAdjustment() {
+        document.getElementById('adjustOriginalPrice').value = '';
+        document.getElementById('adjustBonus').value = '';
+        document.getElementById('adjustRight').value = '';
+        document.getElementById('adjustRightPrice').value = '';
+        document.getElementById('adjustedPrice').innerText = "Adjusted Price: NPR";
+        if (document.getElementById('tvAdjustedPrice')) document.getElementById('tvAdjustedPrice').innerText = "Adjusted Price: NPR";
+    }
+
+    function calculateSIP() {
+        const monthly = parseFloat(document.getElementById('sipMonthly').value);
+        const rate = parseFloat(document.getElementById('sipReturn').value) / 100 / 12;
+        const years = parseFloat(document.getElementById('sipYears').value);
+        if (isNaN(monthly) || isNaN(rate) || isNaN(years)) {
+            alert("Please enter all SIP fields.");
+            return;
+        }
+        const n = years * 12;
+        const maturity = monthly * ((Math.pow(1 + rate, n) - 1) / rate) * (1 + rate);
+        document.getElementById('sipTotalInvested').innerText = "Total Invested: NPR " + (monthly * n).toFixed(2);
+        document.getElementById('sipMaturity').innerText = "Maturity Value: NPR " + (maturity ? maturity.toFixed(2) : "NaN");
+        if (document.getElementById('tvSipTotalInvested')) document.getElementById('tvSipTotalInvested').innerText = "Total Invested: NPR " + (monthly * n).toFixed(2);
+        if (document.getElementById('tvSipMaturity')) document.getElementById('tvSipMaturity').innerText = "Maturity Value: NPR " + (maturity ? maturity.toFixed(2) : "NaN");
+    }
+    function resetSIP() {
+        document.getElementById('sipMonthly').value = '';
+        document.getElementById('sipReturn').value = '';
+        document.getElementById('sipYears').value = '';
+        document.getElementById('sipTotalInvested').innerText = "Total Invested: NPR";
+        document.getElementById('sipMaturity').innerText = "Maturity Value: NPR";
+        if (document.getElementById('tvSipTotalInvested')) document.getElementById('tvSipTotalInvested').innerText = "Total Invested: NPR";
+        if (document.getElementById('tvSipMaturity')) document.getElementById('tvSipMaturity').innerText = "Maturity Value: NPR";
+    }
+
+    function calculateGrahm() {
+        const eps = parseFloat(document.getElementById('grahmEPS').value);
+        const bv = parseFloat(document.getElementById('grahmBV').value);
+        if (isNaN(eps) || isNaN(bv)) {
+            alert("Please enter EPS and Book Value.");
+            return;
+        }
+        const value = Math.sqrt(22.5 * eps * bv);
+        document.getElementById('grahmValue').innerText = "Graham Value: NPR " + (value ? value.toFixed(2) : "NaN");
+        if (document.getElementById('tvGrahmValue')) document.getElementById('tvGrahmValue').innerText = "Graham Value: NPR " + (value ? value.toFixed(2) : "NaN");
+    }
+    function resetGrahm() {
+        document.getElementById('grahmEPS').value = '';
+        document.getElementById('grahmBV').value = '';
+        document.getElementById('grahmValue').innerText = "Graham Value: NPR";
+        if (document.getElementById('tvGrahmValue')) document.getElementById('tvGrahmValue').innerText = "Graham Value: NPR";
+    }
+
+    function calculateAveraging() {
+        const oldQty = parseFloat(document.getElementById('avgOldQty').value);
+        const oldPrice = parseFloat(document.getElementById('avgOldPrice').value);
+        const newQty = parseFloat(document.getElementById('avgNewQty').value);
+        const newPrice = parseFloat(document.getElementById('avgNewPrice').value);
+        if (isNaN(oldQty) || isNaN(oldPrice) || isNaN(newQty) || isNaN(newPrice)) {
+            alert("Please enter all averaging fields.");
+            return;
+        }
+        const totalQty = oldQty + newQty;
+        const avg = ((oldQty * oldPrice) + (newQty * newPrice)) / totalQty;
+        document.getElementById('avgResult').innerText = "Average Price: NPR " + (avg ? avg.toFixed(2) : "NaN");
+        if (document.getElementById('tvAvgResult')) document.getElementById('tvAvgResult').innerText = "Average Price: NPR " + (avg ? avg.toFixed(2) : "NaN");
+    }
+    function resetAveraging() {
+        document.getElementById('avgOldQty').value = '';
+        document.getElementById('avgOldPrice').value = '';
+        document.getElementById('avgNewQty').value = '';
+        document.getElementById('avgNewPrice').value = '';
+        document.getElementById('avgResult').innerText = "Average Price: NPR";
+        if (document.getElementById('tvAvgResult')) document.getElementById('tvAvgResult').innerText = "Average Price: NPR";
+    }
+</script>

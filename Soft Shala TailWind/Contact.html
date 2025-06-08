@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact</title>
+    <!-- TailWind CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Popins Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet" />
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+        }
+
+        nav {
+            transition: box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        nav:hover {
+            transition: box-shadow 0.3s ease-in-out;
+            box-shadow: rgba(255, 0, 102, 0.18) 0px 8px 40px 8px;
+        }
+
+        .btn {
+            color: purple;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: 2px solid purple;
+            padding: 9px 18px;
+            font-size: 17px;
+            cursor: pointer;
+            font-weight: bold;
+            background: transparent;
+            position: relative;
+            transition: all 1s;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        .btn:hover {
+            color: white;
+            z-index: 2;
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            height: 100%;
+            width: 0%;
+            top: 0;
+            left: -40px;
+            transform: skewX(45deg);
+            background-color: purple;
+            z-index: -1;
+            transition: all 1s;
+        }
+
+        .btn:hover::before {
+            width: 160%;
+        }
+
+        .btn::after {
+            content: "";
+            position: absolute;
+            height: 100%;
+            width: 0%;
+            top: 0;
+            right: -40px;
+            transform: skewX(-45deg);
+            background-color: rgb(98, 27, 98);
+            z-index: -1;
+            transition: all 1s;
+        }
+
+        .btn:hover::after {
+            width: 160%;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <!-- Header Section -->
+    <section class="nav-bar">
+        <nav class="bg-gray-800 flex flex-wrap items-center p-2 gap-2 sticky top-0 z-50">
+            <!-- Logo Part -->
+            <a href="index.html" class="flex-shrink-0">
+                <img src="/Assets/Images/logo1.png" alt="" class="w-32 sm:w-40 h-14 object-contain ml-2 sm:ml-5" />
+            </a>
+            <!-- Mobile Menu Button -->
+            <button id="menu-toggle" class="sm:hidden ml-auto mr-2 text-gray-200 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+            <!-- Navigation Links -->
+            <div class="nav-links flex-1 w-full sm:w-auto" id="nav-links">
+                <ul class="flex-col sm:flex-row flex justify-end items-center p-4 text-white gap-3 sm:gap-5 hidden sm:flex">
+                    <li>
+                        <a href="index.html" class="text-white hover:text-gray-400">Home</a>
+                    </li>
+                    <li>
+                        <a href="about.html" class="text-white hover:text-gray-400">About</a>
+                    </li>
+                    <li>
+                        <a href="features.html" class="text-white hover:text-gray-400">Features</a>
+                    </li>
+                    <li>
+                        <a href="news.html" class="text-white hover:text-gray-400">News</a>
+                    </li>
+                    <li>
+                        <a href="contact.html" class="text-gray-600 hover:text-gray-400">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="sm:hidden hidden bg-gray-800">
+            <ul class="flex flex-col text-white gap-2 px-4 pb-4">
+                <li>
+                    <a href="index.html" class="block py-2 hover:text-gray-400">Home</a>
+                </li>
+                <li>
+                    <a href="about.html" class="block py-2 hover:text-gray-400">About</a>
+                </li>
+                <li>
+                    <a href="features.html" class="block py-2 hover:text-gray-400">Features</a>
+                </li>
+                <li>
+                    <a href="news.html" class="block py-2 hover:text-gray-400">News</a>
+                </li>
+                <li>
+                    <a href="contact.html" class="block py-2 text-gray-600 hover:text-gray-400">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <script>
+            const menuToggle = document.getElementById("menu-toggle");
+            const mobileMenu = document.getElementById("mobile-menu");
+            menuToggle.addEventListener("click", () => {
+                mobileMenu.classList.toggle("hidden");
+            });
+            // Hide mobile menu on resize to desktop
+            window.addEventListener("resize", () => {
+                if (window.innerWidth >= 640) {
+                    mobileMenu.classList.add("hidden");
+                }
+            });
+        </script>
+    </section>
+    <!-- Contact Section -->
+    <section class="contact py-8 px-2 sm:px-8 md:px-10">
+        <div class="container mx-auto">
+            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6">
+                Contact Us
+            </h2>
+            <form action="#" method="POST" class="w-full max-w-md mx-auto bg-white p-3 sm:p-6 rounded-lg shadow-md">
+                <div class="mb-4">
+                    <label for="name" class="block text-gray-700">Name</label>
+                    <input type="text" id="name" name="name" required
+                        class="w-full px-3 py-2 sm:px-4 sm:py-2 border rounded focus:outline-none focus:ring focus:ring-purple-300" />
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="block text-gray-700">Email</label>
+                    <input type="email" id="email" name="email" required
+                        class="w-full px-3 py-2 sm:px-4 sm:py-2 border rounded focus:outline-none focus:ring focus:ring-purple-300" />
+                </div>
+                <div class="mb-4">
+                    <label for="message" class="block text-gray-700">Message</label>
+                    <textarea id="message" name="message" rows="4" required
+                        class="w-full px-3 py-2 sm:px-4 sm:py-2 border rounded focus:outline-none focus:ring focus:ring-purple-300"></textarea>
+                </div>
+                <button type="submit" class="btn w-full rounded" style="border-radius: 9px">
+                    Send Message
+                </button>
+            </form>
+        </div>
+    </section>
+    <!-- Footer Section -->
+    <div class="back-to-top flex justify-end px-2 sm:px-5 mb-2">
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'});" class="flex items-center gap-2 text-black">
+            <svg class="w-6 h-6 text-gray-800 cursor-pointer ml-2 sm:ml-9" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd"
+                    d="M12 2a1 1 0 0 1 .932.638l7 18a1 1 0 0 1-1.326 1.281L13 19.517V13a1 1 0 1 0-2 0v6.517l-5.606 2.402a1 1 0 0 1-1.326-1.281l7-18A1 1 0 0 1 12 2Z"
+                    clip-rule="evenodd" />
+            </svg>
+            <span class="cursor-pointer">Back to Top</span>
+        </button>
+    </div>
+    <footer class="bg-gray-800 text-white p-4">
+        <p class="text-center">&copy; 2023 Your Company. All rights reserved.</p>
+        <div class="mt-4 flex flex-col sm:flex-row items-center sm:justify-end gap-3">
+            <p class="mt-3 sm:mt-0">Follow us on:</p>
+            <div class="flex gap-4 mt-2 sm:mt-0">
+                <a href="#"><img src="/Assets/Images/facebook.png" alt="Facebook" class="h-8 w-8" /></a>
+                <a href="#"><img src="/Assets/Images/insta.webp" alt="Instagram" class="h-8 w-8" /></a>
+                <a href="#"><img src="/Assets/Images/linkedin.png" alt="LinkedIn" class="h-8 w-8" /></a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
+<script>
+    document.querySelector("form").addEventListener("submit", function (e) {
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const message = document.getElementById("message").value.trim();
+
+        if (!name || !email || !message) {
+            alert("Please fill in all fields.");
+            e.preventDefault();
+        }
+    });
+</script>
